@@ -87,8 +87,10 @@ def Webdriver_commom_methond2():
 
     #返回百度热榜信息
     hot_chart=driver.find_elements_by_class_name("title-content-title")
-    for hot in hot_chart:
-        print(hot.text)
+    # for hot in hot_chart:
+    #     print(hot.text)
+    for i in range(len(hot_chart)):
+        print(str(i+1)+"."+hot_chart[i].text)
 
     #返回元素的属性值，可以使id、name、type或其他任意属性
     attribute=driver.find_element_by_id("kw").get_attribute("type")
