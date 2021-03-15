@@ -57,9 +57,47 @@ def refresh():
 """
 Webdriver中的常用方法
 """
-def Webdriver_commom_methond():
+def Webdriver_commom_methond1():
     driver.get("http://www.baidu.com")
+    time.sleep(3)
     #clear()清除文本
     driver.find_element_by_id("kw").clear()
     #send_keys(value)模拟按键输入
     driver.find_element_by_id("kw").send_keys("Selenium")
+    time.sleep(3)
+    #click():单击元素
+    driver.find_element_by_id("su").click()
+
+    driver.find_element_by_id("kw").clear()
+
+    #submit():提交表单
+    search_text=driver.find_element_by_id("kw")
+    search_text.send_keys("test_submit")
+    search_text.submit()
+
+    time.sleep(3)
+
+    driver.quit()
+
+def Webdriver_commom_methond2():
+    driver.get("http://www.baidu.com")
+    #获取输入框尺寸
+    size=driver.find_element_by_id("kw").size
+    print(size)
+
+    #返回百度热榜信息
+    hot_chart=driver.find_elements_by_class_name("title-content-title")
+    for hot in hot_chart:
+        print(hot.text)
+
+    #返回元素的属性值，可以使id、name、type或其他任意属性
+    attribute=driver.find_element_by_id("kw").get_attribute("type")
+    print(attribute)
+
+    #返回元素的结果是否可见，返回结果未True或False
+    result=driver.find_element_by_id("kw").is_displayed()
+    print(result)
+
+    driver.quit()
+
+Webdriver_commom_methond2()
